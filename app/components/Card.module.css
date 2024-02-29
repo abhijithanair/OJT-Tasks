@@ -1,0 +1,31 @@
+
+
+.card {
+  display: flex; /* Use flexbox for layout */
+  width: 600px;
+  height:150px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 150px; /* Set the width of the image */
+  height: 150px; /* Set the height of the image */
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px; /* Round the corners */
+}
+
+.card-body {
+  padding: 20px;
+  flex: 1; /* Allow the body to take up remaining space */
+}
+
+.card-body h2 {
+  margin-top: 0;
+}
+
+.card-body p {
+  margin: 10px 0;
+}

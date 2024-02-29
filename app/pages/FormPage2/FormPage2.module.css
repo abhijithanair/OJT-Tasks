@@ -1,0 +1,69 @@
+/* FormPage2.module.css */
+
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.dropzone {
+    border: 2px dashed #ccc;
+    height: 200px;
+    padding: 20px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dropzone.dragging {
+    border-color: #007bff;
+  }
+  
+  .dropzone p {
+    margin: 0;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  .formDropDown {
+    margin: 5px;
+    width: 60%;
+    height:40px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  
+  .previewImage {
+    max-width: 100%;
+    max-height: 200px; /* Adjust height as needed */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .error {
+    color: red; /* Set text color to red */
+    font-size: 0.8rem; /* Optional: Adjust font size */
+    margin-top: 0.25rem; /* Optional: Add some spacing */
+  }  
+  
+.formButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .formButton:hover {
+    background-color: #0056b3;
+  }

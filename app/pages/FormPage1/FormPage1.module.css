@@ -1,0 +1,52 @@
+/* FormPage1.module.css */
+
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.formInput {
+  width: 60%;
+  height:20px;
+  margin:5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.formDropDown {
+  margin: 5px;
+  width: 60%;
+  height:40px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.formButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.formButton:hover {
+  background-color: #0056b3;
+}
+.error {
+  color: red; /* Set text color to red */
+  font-size: 0.8rem; /* Optional: Adjust font size */
+  margin-top: 0.25rem; /* Optional: Add some spacing */
+}
