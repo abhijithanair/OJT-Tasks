@@ -1,11 +1,10 @@
-// FormPage1.tsx
-'use client';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import * as Yup from 'yup'; 
 import styles from './FormPage1.module.css';
 import useFormData from '../../hooks/useFormData';
+import axiosInstance from '../../utils/axiosInstance'; // Import Axios instance
 
 interface FormValues {
   firstName: string;
@@ -13,19 +12,20 @@ interface FormValues {
   gender: string;
   country: string;
   idcard: string;
-  file: string;
+  file:string;
 }
-
 
 const FormPage1 = () => {
   const router = useRouter();
   const { formData, updateFormData, isFormDataStored } = useFormData();
 
-  const handleSubmit = (values: FormValues) => {
+  const handleSubmit = async (values: FormValues) => {
     try {
       updateFormData(values);
       console.log('Is form data stored:', isFormDataStored());
-      // await axios.post('/api/form1', values);
+
+      // Make authenticated API request using Axios
+      await axiosInstance.post('/form1', values); // Assuming the endpoint is '/form1' in the backend
       router.push('/pages/FormPage2');
     } catch (error) {
       console.log('Error submitting form:', error);
