@@ -1,5 +1,5 @@
 // pages/index.tsx
-
+'use client';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // Import Axios
 import Card from '@/app/components/card';
@@ -14,8 +14,19 @@ interface User {
 }
 
 const IndexPage: React.FC = () => {
-    const router = useRouter();
+  const router = useRouter();
   const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    // Check if token exists in local storage
+    const token = localStorage.getItem('token');
+
+    // If token doesn't exist, redirect to login page
+    if (!token) {
+      router.push('/');
+    }
+  }, []);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -23,8 +34,10 @@ const IndexPage: React.FC = () => {
         const response = await axios.get('https://jsonplaceholder.typicode.com/users'); // Use Axios to make GET request
         const data: User[] = response.data; // Extract data from response
         setUsers(data);
+        setLoading(false); // Set loading state to false after data is fetched
       } catch (error) {
         console.error('Error fetching data:', error);
+        setLoading(false); // Set loading state to false in case of error
       }
     };
 
@@ -35,6 +48,10 @@ const IndexPage: React.FC = () => {
     router.push('/pages/FormPage1');
   };
 
+  if (loading) {
+    return <div>Loading...</div>; // Render loading indicator while data is being fetched
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Users</h1>
@@ -44,7 +61,6 @@ const IndexPage: React.FC = () => {
         ))}
         <button onClick={handleAddUserClick} className={styles.newuserbutton}>Add New User</button>
       </div>
-      
     </div>
   );
 };

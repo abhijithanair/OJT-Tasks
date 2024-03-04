@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: '/api', // Assuming your API endpoints start with /api
+  baseURL: '/api', 
 });
 
 // Add a request interceptor

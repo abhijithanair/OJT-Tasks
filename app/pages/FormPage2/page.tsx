@@ -1,12 +1,21 @@
 // FormPage2.tsx
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useRouter } from 'next/navigation'; // Assuming correct import
 import useFormData from '../../hooks/useFormData';
 import styles from './FormPage2.module.css';
 
 const FormPage2 = () => {
+  useEffect(() => {
+    // Check if token exists in local storage
+    const token = localStorage.getItem('token');
+
+    // If token doesn't exist, redirect to login page
+    if (!token) {
+      router.push('/');
+    }
+  }, []);
   const router = useRouter();
   const { formData, updateFormData, saveFileToLocalFolder } = useFormData();
   const [file, setFile] = useState<string | null>(formData.file); // Update type to string | null

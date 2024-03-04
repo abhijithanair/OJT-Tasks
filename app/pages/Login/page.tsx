@@ -2,7 +2,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import styles from './Login.module.css';
-import login from '../api/login';
 
 const Login = () => {
   const router = useRouter();
@@ -21,7 +20,7 @@ const Login = () => {
       
       // Store the token in local storage
       localStorage.setItem('token', token);
-      router.push('/pages/FormPage1');
+      router.push('/pages/Index');
     } catch (error) {
       setError('Invalid username or password');
     }

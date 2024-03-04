@@ -1,6 +1,7 @@
+'use client';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Yup from 'yup'; 
 import styles from './FormPage1.module.css';
 import useFormData from '../../hooks/useFormData';
@@ -16,6 +17,15 @@ interface FormValues {
 }
 
 const FormPage1 = () => {
+  useEffect(() => {
+    // Check if token exists in local storage
+    const token = localStorage.getItem('token');
+
+    // If token doesn't exist, redirect to login page
+    if (!token) {
+      router.push('/');
+    }
+  }, []);
   const router = useRouter();
   const { formData, updateFormData, isFormDataStored } = useFormData();
 
@@ -25,7 +35,7 @@ const FormPage1 = () => {
       console.log('Is form data stored:', isFormDataStored());
 
       // Make authenticated API request using Axios
-      await axiosInstance.post('/form1', values); // Assuming the endpoint is '/form1' in the backend
+      await axiosInstance.post('/api/form1', values);
       router.push('/pages/FormPage2');
     } catch (error) {
       console.log('Error submitting form:', error);
