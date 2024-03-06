@@ -1,6 +1,8 @@
 // login.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
+import {isAuthenticated, setIsAuthenticated } from "@/app/Auth";
+
 
 const KEY = 'asadfdsfSsddgsasfsdfhdsfdf';
 
@@ -27,6 +29,9 @@ export default function login(req: NextApiRequest, res: NextApiResponse) {
 
     // Generate JWT token
     const token = jwt.sign({ username, admin: isValidCredentials }, KEY);
+    setIsAuthenticated(true);
+    console.log(`This is the status: ${isAuthenticated}`);
+
 
     // Send token in response
     res.status(200).json({ token });

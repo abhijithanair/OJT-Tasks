@@ -5,6 +5,7 @@ import axios from 'axios'; // Import Axios
 import Card from '@/app/components/card';
 import styles from '../Index/index.module.css';
 import { useRouter } from 'next/navigation';
+import isAuth from '@/app/components/isAuth';
 
 interface User {
   id: number;
@@ -17,16 +18,6 @@ const IndexPage: React.FC = () => {
   const router = useRouter();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true); // Add loading state
-
-  useEffect(() => {
-    // Check if token exists in local storage
-    const token = localStorage.getItem('token');
-
-    // If token doesn't exist, redirect to login page
-    if (!token) {
-      router.push('/');
-    }
-  }, []);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -65,4 +56,4 @@ const IndexPage: React.FC = () => {
   );
 };
 
-export default IndexPage;
+export default isAuth(IndexPage);
